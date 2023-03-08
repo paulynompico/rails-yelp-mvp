@@ -3,4 +3,14 @@
 <p><%= @restaurant.address %></p>
 <p><%= @restaurant.phone_number %></p>
 
+<p><strong>Reviews</strong></p>
+<div class="row">
+  <% @restaurant.reviews.each do |review| %>
+    <p class="col-6"><%= review.content %></p>
+    <p class="col-2"><%= review.rating %></p>
+  <% end %>
+</div>
+
+<p class="btn pt-3 text-decoration-none" id="add_btn"><%= link_to "Add a review", new_restaurant_review_path(@restaurant) %></p>
+
 <p><%= link_to "Back to list", restaurants_path %></p>
