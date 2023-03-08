@@ -1,15 +1,23 @@
-<h1><%= @restaurant.name %></h1>
-<p><%= @restaurant.category.capitalize %></p>
-<p><%= @restaurant.address %></p>
-<p><%= @restaurant.phone_number %></p>
-
-<p><strong>Reviews</strong></p>
-<div class="row">
-  <% @restaurant.reviews.each do |review| %>
-    <p class="col-6"><%= review.content %></p>
-    <p class="col-2"><%= review.rating %></p>
-  <% end %>
+<div class="container pt-5">
+  <h1><%= @restaurant.name %></h1>
+  <p><%= @restaurant.category.capitalize %></p>
+  <p><%= @restaurant.address %></p>
+  <p><%= @restaurant.phone_number %></p>
 </div>
 
-<p class="btn"><%= link_to "Add a review", new_restaurant_review_path(@restaurant) %></p>
-<p class="btn"><%= link_to "Back to list", restaurants_path %></p>
+<div class="container">
+  <p><strong>Reviews</strong></p>
+  <div class="row">
+    <% @restaurant.reviews.each do |review| %>
+      <div class="card">
+        <p class="col-2 pt-3"><%= "Rating: #{review.rating}" %></p>
+        <p class="col-6"><%= review.content %></p>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<div class="container mt-3 d-flex">
+  <p class="d-inline-flex p-2"><%= link_to "Add a review", new_restaurant_review_path(@restaurant), class:"btn btn-primary" %></p>
+  <p class="d-inline-flex p-2"><%= link_to "Back to list", restaurants_path, class:"btn btn-primary" %></p>
+</div>
